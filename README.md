@@ -13,6 +13,10 @@ A bilingual (Arabic/English) web application for processing building permit appl
 ## Quick Start
 
 ```bash
+# Copy and configure environment variables
+cp .env.example .env
+# Edit .env with your own values (database credentials, secret key, etc.)
+
 # Start all services
 docker-compose up -d
 
@@ -54,10 +58,15 @@ uvicorn app.main:app --reload
 
 ## Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql+asyncpg://postgres:postgres@localhost:5432/gam_permits` |
-| `REDIS_URL` | Redis connection string | `redis://localhost:6379/0` |
-| `SECRET_KEY` | JWT signing key | `dev-secret-key` |
-| `ANTHROPIC_API_KEY` | Claude API key for document extraction | - |
-| `NEXT_PUBLIC_API_URL` | Backend API URL for frontend | `http://localhost:8000/api/v1` |
+Copy `.env.example` to `.env` and fill in your values. See `.env.example` for all required variables.
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `POSTGRES_USER` | PostgreSQL username | Yes |
+| `POSTGRES_PASSWORD` | PostgreSQL password | Yes |
+| `POSTGRES_DB` | PostgreSQL database name | Yes |
+| `DATABASE_URL` | Full PostgreSQL connection string | Yes |
+| `SECRET_KEY` | JWT signing key (use a long random string) | Yes |
+| `REDIS_URL` | Redis connection string | No (defaults to localhost) |
+| `ANTHROPIC_API_KEY` | Claude API key for document extraction | For AI features |
+| `NEXT_PUBLIC_API_URL` | Backend API URL for frontend | No (defaults to localhost) |
