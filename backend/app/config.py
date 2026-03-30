@@ -3,9 +3,9 @@ from typing import List
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/gam_permits"
+    DATABASE_URL: str
     REDIS_URL: str = "redis://localhost:6379/0"
-    SECRET_KEY: str = "change-me-in-production-use-a-long-random-string"
+    SECRET_KEY: str
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     ANTHROPIC_API_KEY: str = ""
